@@ -30,12 +30,12 @@ const handelChange=(e)=>{
 
      return <>
      <Box  w="full" h='100px' bg='#E2E8F0'  >
-      <Box    w='60%' h='40px' pt="20px" m='auto' >
+      <Box    w='90%' h='40px' pt="20px" m='auto' >
 
-      <Flex gap='2px' >
-  <Avatar w='100px'  h='40px' mt="10px" mr="50px"   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2uUiJ-LmS09iGZsWQOv7oPFwIUSLQK3HLkQ&usqp=CAU"   ></Avatar>
+      <Flex gap='10px' >
+  <Avatar w='100px'  h='40px' mt="10px" mr="50px"   src="https://i.ibb.co/fN9Ns4S/LOGOC5.jpg"   ></Avatar>
  <Spacer/>
-<Link to='/'>Home</Link>
+<Link to='/'>Home Page</Link>
  <Select placeholder='Select option'>
   <option value='option1'>Option 1</option>
   <option value='option2'>Option 2</option>
