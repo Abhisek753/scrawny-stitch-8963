@@ -9,7 +9,7 @@ export default function Mobile(){
 const {state,dispatch}=useContext(Appcontext)
 
 async function Mobile(){
-    return fetch(`http://localhost:3001/random?_page=1&limit=10&category=Mobile`).then((res)=>res.json())
+    return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=1&limit=10&category=Mobile`).then((res)=>res.json())
 }
 
 useEffect(()=>{

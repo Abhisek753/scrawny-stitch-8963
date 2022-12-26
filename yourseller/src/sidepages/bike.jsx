@@ -12,7 +12,7 @@ export default function Bikes (){
 
    
     async function Getbikes(){
-        return fetch(`http://localhost:3001/random?_page=1&limit=10&category=bikes`).then((res)=>res.json())
+        return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=1&limit=10&category=bikes`).then((res)=>res.json())
     }
 
     useEffect(()=>{

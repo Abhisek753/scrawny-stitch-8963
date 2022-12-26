@@ -33,7 +33,7 @@ const handelChange=(e)=>{
       <Box    w='90%' h='40px' pt="20px" m='auto' >
 
       <Flex gap='10px' >
-  <Avatar w='100px'  h='40px' mt="10px" mr="50px"   src="https://i.ibb.co/fN9Ns4S/LOGOC5.jpg"   ></Avatar>
+      <Link to='/'><Avatar w='100px'  h='40px' mt="10px" mr="50px"   src="https://i.ibb.co/fN9Ns4S/LOGOC5.jpg"   ></Avatar></Link>
  <Spacer/>
 <Link to='/'>Home Page</Link>
  <Select placeholder='Select option'>
