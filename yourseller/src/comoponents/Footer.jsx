@@ -74,7 +74,7 @@
 //           </Stack>
 
 //           <Stack align={'flex-start'}>
-//             <ListHeader>Legal</ListHeader>
+//             <ListHeader>  Legal  </ListHeader>
 //             <Link href={'#'}>Cookies Policy</Link>
 //             <Link href={'#'}>Privacy Policy</Link>
 //             <Link href={'#'}>Terms of Service</Link>
