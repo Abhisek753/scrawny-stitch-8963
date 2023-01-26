@@ -1,2 +1,1 @@
-day 1- created repo project plan 
-       logo design ,issue and task decided        
+Olx is a site where people can buy and sell products and services.An individual project constructed and executed in 5 days.       ![Screenshot (71)](https://user-images.githubusercontent.com/112477961/214913729-c7bfb4c5-d77e-40b8-9c99-82d849225d0c.png)
