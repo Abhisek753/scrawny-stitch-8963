@@ -1,111 +1,83 @@
-import { Button, Container, Grid,GridItem, useConst,Skeleton ,Box,Tabs,TabPanel,Tab,TabList,TabPanels,Progress,Stack,Checkbox} from "@chakra-ui/react"
-import { useContext, useState } from "react"
-import { useEffect } from "react"
-import CardMapping from "./Cardmapping"
+import {
+  Button,
+  Container,
+  Grid,
+  GridItem,
+  useConst,
+  Skeleton,
+  Box,
+  Tabs,
+  TabPanel,
+  Tab,
+  TabList,
+  TabPanels,
+  Progress,
+  Stack,
+  Checkbox,
+  Flex,
+  Select,
+  SimpleGrid,
+} from "@chakra-ui/react";
+import { useContext, useState } from "react";
+import { useEffect } from "react";
+import CardMapping from "./Cardmapping";
 
-import { Appcontext } from "../Statemange"
+import { Appcontext } from "../Statemange";
+import Footer from "../Footer";
+import CardContainer from "./CardContainer";
+
+export default function MainPage() {
+  const { state, dispatch } = useContext(Appcontext);
+
+  const [checkvalue, setCheckValue] = useState("");
+  const [cat, setCat] = useState("Mobile");
+  const [order,setOrder]=useState("asc")
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+
+  
 
 
-export default function MainPage(){
+  const getData = async (cat,order) => {
+    try {
+      let res = await fetch(
+        `https://mysterious-goat-windbreaker.cyclic.app/random?category=${cat}&_page=1&_limit=10&_sort=price&_order=${order}`
+      );
+      let data = await res.json();
+      console.log(data);
+      setData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-const {state,dispatch}=useContext(Appcontext)
-
-const [checkvalue,setCheckValue]=useState("")
-const [mobidata,setmobidata]=useState("")
-  const [data,setdata]=useState([])
-const [page,setPage]=useState(1)
-
-
-
-async function FetchRandom(p){
-  return  fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=${p.page}&_limit=10`).then((res)=>{
-   return res.json()
-  })
- }
-
- async function Alldata(){
-  return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random`).then((res)=>res.json())
- }
  
 
-    useEffect(()=>{
-Alldata().then((res)=>dispatch({type:"search",payload:res}))
+  useEffect(() => {
+    getData(cat,order);
+  }, [cat,order]);
 
+  return (
+    <>
+      <Select
+        placeholder="Select Category"
+        onChange={(e) => setCat(e.target.value)}
+      >
+        <option value="Mobile">Mobile</option>
 
+        <option value="bikes">Bike</option>
+      </Select>
+      <Select
+        placeholder="Select Order"
+        onChange={(e) => setOrder(e.target.value)}
+      >
+        <option value="asc">Ascending order</option>
 
-dispatch({type:"start"})
-FetchRandom({page:page}).then((res)=>{
-  
-dispatch({type:"finish",payload:res})
-}).catch((error)=>{
-  dispatch({type:"loginfail"})
-})
-    },[page])
-
-
-const tabChange=(e)=>{
-  setCheckValue(e.target.checked)
-
-  async function sortdata(){
-return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_sort=price&order=desc`).then((res)=>res.json())
-  }
-  
-  if(checkvalue==false){
-   sortdata().then((res)=>dispatch({type:"finish",payload:res}))
-  }
-  else{
-    FetchRandom({page:page}).then((res)=>dispatch({type:"finish",payload:res}))
-  }
-}
-async function mobiledata(){
-  return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?category=Mobile`).then((res)=>res.json())
-    }
-
-async function mobilesort(e){
-
-if(e.target.checked){
-  mobiledata().then((res)=>dispatch({type:"finish",payload:res}))
-}
-else{
-  FetchRandom({page:page}).then((res)=>dispatch({type:"finish",payload:res}))
-}
-}
-
-
-
-    return(<>
-
-{ state.isloading?<Progress size='lg' isIndeterminate />: <Grid
-  h='200px'
-  templateRows='repeat(2, 1fr)'
-  templateColumns='repeat(5, 1fr)'
-  gap={4} mt={4}
->
-  <GridItem rowSpan={2} colSpan={1}>
-<Box   bg='grey.100' h='200px'  display={'flex'} justifyContent={'center'} >
-
-<Stack spacing={[1, 5]} direction={['column', 'row']}>
-  
-  <Checkbox size='md' colorScheme='green' onChange={tabChange} >
-   Price
-  </Checkbox>
-  <Checkbox size='lg' colorScheme='orange' onChange={mobilesort}  >
-   Mobile
-  </Checkbox>
-</Stack>
-
-</Box>
-
-  </GridItem>
-
-  <GridItem colSpan={4} bg='gray.100' >
-   <CardMapping  page={page} data={state.data} fn={setPage} />
-  </GridItem>
-  
-
-</Grid>}
-
-
-    </>)
-
+        <option value="desc">Descending Order</option>
+      </Select>
+      <SimpleGrid m="auto" w="80%" gap={5} columns={[1,2,3,4]}>
+    {data.length!==0&&data.map((el,index,arr)=><CardContainer  key={el.id} {...el}/>)}
+      </SimpleGrid>
+    </>
+  );
 }

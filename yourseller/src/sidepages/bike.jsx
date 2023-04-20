@@ -31,13 +31,10 @@ dispatch({type:"finish"})
     return <>
      {
         
-        state.isloading?<Skeleton startColor='green.500' endColor='black.500' height='20px' />:  <Grid templateColumns='repeat(5, 1fr)' gap={6} bg='gray.100'  >
-
-        
-        
+        state.isloading?<Skeleton startColor='green.500' endColor='black.500' height='20px' color={"black"} />:  <Grid templateColumns='repeat(5, 1fr)' gap={6} bg='gray.100'  >
         { state.bikedata&& state.bikedata.map((elm)=>
        
-        <Box key={elm.id} > 
+        <Box key={elm.id} color={"black"} > 
         <Image src={elm.image} width='300px' h='300px' ></Image>
         <Text>{elm.category}</Text>
         <Text>{elm.price}</Text>
