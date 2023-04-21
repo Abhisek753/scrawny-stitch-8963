@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Buypage from "./pages/buypage";
 import Login from "./pages/login";
 import Cars from "./pages/cars";
-import DetailsPage from "./pages/DetailsPage";
+// import DetailsPage from "./pages/DetailsPage";
 import MainPage from "./pages/mainpage";
 import Mobile from "../sidepages/Mobile";
 import Bikes from "../sidepages/bike";
@@ -25,9 +25,8 @@ export default function Allroutes() {
       ></Route>
       <Route path="/mobile" element={<Mobile />}></Route>
       <Route path="/bike" element={<Bikes />}></Route>
-      {/* <Route path="/:id" element={<DetailsPage />}></Route> */}
-      <Route path="/:id" element={<SinglePage/>}></Route>
 
+      <Route path="/:id" element={<SinglePage />}></Route>
     </Routes>
   );
 }
