@@ -8,6 +8,7 @@ import MainPage from "./pages/mainpage";
 import Mobile from "../sidepages/Mobile";
 import Bikes from "../sidepages/bike";
 import Private from "../sidepages/privateRoute";
+import SinglePage from "./pages/SinglePage";
 export default function Allroutes() {
   return (
     <Routes>
@@ -24,7 +25,9 @@ export default function Allroutes() {
       ></Route>
       <Route path="/mobile" element={<Mobile />}></Route>
       <Route path="/bike" element={<Bikes />}></Route>
-      <Route path="/:id" element={<DetailsPage />}></Route>
+      {/* <Route path="/:id" element={<DetailsPage />}></Route> */}
+      <Route path="/:id" element={<SinglePage/>}></Route>
+
     </Routes>
   );
 }
