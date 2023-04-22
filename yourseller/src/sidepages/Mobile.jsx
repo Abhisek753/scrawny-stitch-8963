@@ -4,6 +4,7 @@ import { useContext } from "react"
 import { Appcontext } from "../comoponents/Statemange"
 import { Box,Grid,GridTemplate,Image,Text,SkeletonCircle,Skeleton,SkeletonText } from "@chakra-ui/react"
 import {Link} from "react-router-dom"
+import CardContainer from "../comoponents/pages/CardContainer"
 
 export default function Mobile(){
 const {state,dispatch}=useContext(Appcontext)
@@ -32,14 +33,14 @@ return <>
    
    {  state.mobiledata&&state.mobiledata.map((elm)=>
   
-   <Box key={elm.id} > 
-   <Image src={elm.image} width='300px' h='300px' ></Image>
-   <Text>{elm.category}</Text>
-   <Text>{elm.price}</Text>
-   <Link to={`/${elm.id}`} >More Details</Link></Box>)
-   
-   
-  }
+//    <Box key={elm.id} > 
+//    <Image src={elm.image} width='300px' h='300px' ></Image>
+//    <Text>{elm.category}</Text>
+//    <Text>{elm.price}</Text>
+//    <Link to={`/${elm.id}`} >More Details</Link></Box>
+<CardContainer {...elm}/>
+        
+   )}
   
   </Grid>
 }

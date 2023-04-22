@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import { Appcontext } from "../comoponents/Statemange"
 import { Box,Grid,GridTemplate,Image,Text,SkeletonCircle,Skeleton,SkeletonText } from "@chakra-ui/react"
 import {Link} from "react-router-dom"
+import CardContainer from "../comoponents/pages/CardContainer"
 export default function Bikes (){
 
    
@@ -34,14 +35,13 @@ dispatch({type:"finish"})
         state.isloading?<Skeleton startColor='green.500' endColor='black.500' height='20px' color={"black"} />:  <Grid templateColumns='repeat(5, 1fr)' gap={6} bg='gray.100'  >
         { state.bikedata&& state.bikedata.map((elm)=>
        
-        <Box key={elm.id} color={"black"} > 
-        <Image src={elm.image} width='300px' h='300px' ></Image>
-        <Text>{elm.category}</Text>
-        <Text>{elm.price}</Text>
-        <Link to={`/${elm.id}`} >More Details</Link></Box>)
-        
-        
-       }
+        // <Box key={elm.id} color={"black"} > 
+        // <Image src={elm.image} width='300px' h='300px' ></Image>
+        // <Text>{elm.category}</Text>
+        // <Text>{elm.price}</Text>
+        // <Link to={`/${elm.id}`} >More Details</Link></Box>
+        <CardContainer {...elm}/>
+        ) }
        
        </Grid>
 }
