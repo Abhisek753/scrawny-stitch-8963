@@ -45,7 +45,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box w="full" h="100px" bg="#E2E8F0">
+      <Box w="full" h="100px" bg="#E2E8F0" >
         <Box w="90%" h="40px" pt="20px" m="auto">
           <Flex gap="10px">
             <Link to="/">

@@ -17,6 +17,7 @@ import {
   Flex,
   Select,
   SimpleGrid,
+  background,
 } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { useEffect } from "react";
@@ -31,17 +32,14 @@ export default function MainPage() {
 
   const [checkvalue, setCheckValue] = useState("");
   const [cat, setCat] = useState("Mobile");
-  const [order,setOrder]=useState("asc")
+  const [order, setOrder] = useState("asc");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
 
-  
-
-
-  const getData = async (cat,order) => {
+  const getData = async (cat, order) => {
     try {
       let res = await fetch(
-        `https://mysterious-goat-windbreaker.cyclic.app/random?category=${cat}&_page=1&_limit=10&_sort=price&_order=${order}`
+        `https://mysterious-goat-windbreaker.cyclic.app/random?category=${cat}&_page=${page}&_limit=10&_sort=price&_order=${order}`
       );
       let data = await res.json();
       console.log(data);
@@ -51,33 +49,56 @@ export default function MainPage() {
     }
   };
 
- 
-
   useEffect(() => {
-    getData(cat,order);
-  }, [cat,order]);
+    getData(cat, order);
+  }, [cat, order, page]);
 
   return (
-    <>
-      <Select
-        placeholder="Select Category"
-        onChange={(e) => setCat(e.target.value)}
-      >
-        <option value="Mobile">Mobile</option>
+    <Flex display={["block", "block", "flex"]}>
+      <Box w={"20%"}>
+        <Select
+          mt={5}
+          _hover={{ backgroundColor: "teal" }}
+          border={"none"}
+          placeholder="Select Category"
+          onChange={(e) => setCat(e.target.value)}
+        >
+          <option value="Mobile">Mobile</option>
 
-        <option value="bikes">Bike</option>
-      </Select>
-      <Select
-        placeholder="Select Order"
-        onChange={(e) => setOrder(e.target.value)}
-      >
-        <option value="asc">Ascending order</option>
+          <option value="bikes">Bike</option>
+        </Select>
+        <Select
+          mt={5}
+          border={"none"}
+          _hover={{ backgroundColor: "teal" }}
+          placeholder="Select Order"
+          onChange={(e) => setOrder(e.target.value)}
+        >
+          <option value="asc">Ascending order</option>
 
-        <option value="desc">Descending Order</option>
-      </Select>
-      <SimpleGrid m="auto" w="80%" gap={5} columns={[1,2,3,4]}>
-    {data.length!==0&&data.map((el,index,arr)=><CardContainer  key={el.id} {...el}/>)}
-      </SimpleGrid>
-    </>
+          <option value="desc">Descending Order</option>
+        </Select>
+      </Box>
+      <Box border={"2px solid green"}>
+        <SimpleGrid m="auto" w="95%" gap={5} columns={[1, 2, 3, 4]}>
+          {data.length !== 0 &&
+            data.map((el, index, arr) => <CardContainer key={el.id} {...el} />)}
+        </SimpleGrid>
+        <Box
+          display={"flex"}
+          m={"auto"}
+          width={"30%"}
+          justifyContent={"space-between"}
+        >
+          <Button onClick={() => setPage(page - 1)} bgColor={"#6870a6"}>
+            Next
+          </Button>
+          <Button bgColor={"#a1a7cf"}>{page}</Button>
+          <Button onClick={() => setPage(page + 1)} bgColor={"#6870a6"}>
+            Next
+          </Button>
+        </Box>
+      </Box>
+    </Flex>
   );
 }
