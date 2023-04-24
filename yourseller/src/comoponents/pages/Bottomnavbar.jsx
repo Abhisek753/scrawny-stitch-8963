@@ -215,7 +215,7 @@ import { Link } from "react-router-dom";
        </Box>
          <Box>
          <Text as="b" m="auto" _hover={{ bg: "gray.400" }} mt="10px">
-            <Link to="/bike">Motar Cylcle</Link>
+            <Link to="/bike">Motar Cycle</Link>
           </Text>
          </Box>
          <Box>
@@ -309,11 +309,13 @@ import { Link } from "react-router-dom";
           _hover={{
             textDecoration: 'none',
           }}>
+            <Link to={href} >
           <Text
             fontWeight={600}
             color={useColorModeValue('gray.600', 'gray.200')}>
             {label}
           </Text>
+          </Link>
           {children && (
             <Icon
               as={ChevronDownIcon}
@@ -344,19 +346,21 @@ import { Link } from "react-router-dom";
   
   const NAV_ITEMS = [
     {
-      label: 'Inspiration',
+      label: 'Cars',
+      href: '/cars',
      
     },
     {
-      label: 'Find Work',
+      label: 'Moter Cycle',
+      href: '/bike',
      
     },
     {
-      label: 'Learn Design',
-      href: '#',
+      label: 'Mobile Phones',
+      href: '/mobile',
     },
     {
-      label: 'Hire Designers',
+      label: 'Sale: House&appartment',
       href: '#',
     },
   ];
