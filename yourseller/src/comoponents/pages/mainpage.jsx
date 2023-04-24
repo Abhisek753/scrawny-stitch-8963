@@ -1,19 +1,6 @@
 import {
   Button,
-  Container,
-  Grid,
-  GridItem,
-  useConst,
-  Skeleton,
   Box,
-  Tabs,
-  TabPanel,
-  Tab,
-  TabList,
-  TabPanels,
-  Progress,
-  Stack,
-  Checkbox,
   Flex,
   Select,
   SimpleGrid,
@@ -54,10 +41,17 @@ export default function MainPage() {
   }, [cat, order, page]);
 
   return (
-    <Flex display={["block", "block", "flex"]}>
-      <Box w={"20%"}>
+     
+    <Flex display={["block", "block", "flex"]} zIndex={-1} >
+      <Box w={"20%"}
+       boxShadow={"1px 2px 9px #e2e8f0"}
+       zIndex={-1}
+      >
         <Select
           mt={5}
+        m={"auto"}
+
+         width={"90%"}
           _hover={{ backgroundColor: "teal" }}
           border={"none"}
           placeholder="Select Category"
@@ -68,7 +62,11 @@ export default function MainPage() {
           <option value="bikes">Bike</option>
         </Select>
         <Select
+        m={"auto"}
           mt={5}
+      
+          width={"90%"}
+         
           border={"none"}
           _hover={{ backgroundColor: "teal" }}
           placeholder="Select Order"
@@ -79,8 +77,8 @@ export default function MainPage() {
           <option value="desc">Descending Order</option>
         </Select>
       </Box>
-      <Box border={"2px solid green"}>
-        <SimpleGrid m="auto" w="95%" gap={5} columns={[1, 2, 3, 4]}>
+      <Box>
+        <SimpleGrid m="auto" w="95%" gap={5} columns={[1, 2, 3, 4]} >
           {data.length !== 0 &&
             data.map((el, index, arr) => <CardContainer key={el.id} {...el} />)}
         </SimpleGrid>
@@ -91,7 +89,7 @@ export default function MainPage() {
           justifyContent={"space-between"}
         >
           <Button onClick={() => setPage(page - 1)} bgColor={"#6870a6"}>
-            Next
+            Pre
           </Button>
           <Button bgColor={"#a1a7cf"}>{page}</Button>
           <Button onClick={() => setPage(page + 1)} bgColor={"#6870a6"}>

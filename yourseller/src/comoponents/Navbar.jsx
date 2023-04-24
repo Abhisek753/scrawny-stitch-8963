@@ -45,7 +45,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box w="full" h="100px" bg="#E2E8F0" >
+      <Box w="98%" h="100px" bg="#E2E8F0" >
         <Box w="90%" h="40px" pt="20px" m="auto">
           <Flex gap="10px">
             <Link to="/">
@@ -107,132 +107,7 @@ export default function Navbar() {
       </Box>
       <Box border="1px solid grey" mt="2px" bg="grey"></Box>
 
-      <Box>
-        <Grid ml="5%" templateColumns="repeat(8, 1fr)" gap={6}>
-          <Box>
-            <Menu>
-              <MenuButton
-                px={4}
-                py={2}
-                transition="all 0.2s"
-                borderRadius="md"
-                borderWidth="3px"
-                _hover={{ bg: "gray.400" }}
-                _expanded={{ bg: "blue.400" }}
-                _focus={{ boxShadow: "outline" }}
-              >
-                All Catagorie <ChevronDownIcon />
-              </MenuButton>
-              <MenuList>
-                <Grid h="auto" templateColumns="repeat(4, 1fr)" gap={3}>
-                  <GridItem rowSpan={1} colSpan={1}>
-                    <MenuItem>olx auto(cars)</MenuItem>
-                    <MenuDivider />
-                    <Text as="b">Properties</Text>
-                    <MenuDivider />
-                    <MenuItem>For Sale House</MenuItem>
-                    <MenuItem>For Rent</MenuItem>
-                    <MenuItem>Land and Plot</MenuItem>
-                    <MenuItem>Pg & Guest house</MenuItem>
-                    <MenuItem>For Sale office</MenuItem>
-                  </GridItem>
-                  <GridItem colSpan={1}>
-                    <MenuDivider /> <Text as="b">Jobs</Text>
-                    <MenuDivider />
-                    <MenuItem>Data entery &backOfiice</MenuItem>
-                    <MenuItem>Sales & Marketing</MenuItem>
-                    <MenuItem>BPO & Tellecaller</MenuItem>
-                    <MenuItem>Driver</MenuItem>
-                    <MenuItem>Office assistance</MenuItem>
-                    <MenuItem>Delivery collection</MenuItem>
-                    <MenuItem>Teacher</MenuItem>
-                    <MenuItem>Cook</MenuItem>
-                    <MenuItem>Receptionist</MenuItem>
-                    <MenuItem>Operator & Technician</MenuItem>
-                    <MenuItem>IT Engineer & Devloper</MenuItem>
-                    <MenuItem>Hotel & TravelExecutive</MenuItem>
-                    <MenuItem>Accountant</MenuItem>
-                    <MenuItem>Designer</MenuItem>
-                    <MenuItem>OtherJobs</MenuItem>
-                    <MenuDivider />
-                    <Text as="b">Bikes</Text>
-                    <MenuItem>MoterCycle</MenuItem>
-                    <MenuItem>Scooter</MenuItem>
-                    <MenuItem>SparePart</MenuItem>
-                    <MenuItem>BiCycle</MenuItem>
-                  </GridItem>
-                  <GridItem colSpan={1}>
-                    <MenuDivider />
-                    <Text as="b">Electronics & Applinces</Text>
-                    <MenuDivider />
-                    <MenuItem>Tv's Vidio -audio</MenuItem>
-                    <MenuItem></MenuItem>
-                    <MenuItem>Kitchen Other Applicens</MenuItem>
-                    <MenuItem>Computer&Parts</MenuItem>
-                    <MenuItem>Camera & Lenses</MenuItem>
-                    <MenuItem>Games & Entertainment</MenuItem>
-                    <MenuItem>Fridge</MenuItem>
-                    <MenuItem>Computer Accesories</MenuItem>
-                    <MenuItem>Hard Disk&Monitor </MenuItem>
-                  </GridItem>
-                  <GridItem colSpan={1} bg="tomato">
-                    {" "}
-                    <MenuDivider />
-                    <Text as="b">Fashion</Text>
-                    <MenuItem>Men</MenuItem>
-                    <MenuItem>Women</MenuItem>
-                    <MenuItem>Children</MenuItem>
-                    <MenuDivider />
-                    <Text as="b">Books,Sports& Hobbies</Text>
-                    <MenuDivider />
-                    <MenuItem>Books</MenuItem>
-                    <MenuItem>Gym&Fitness</MenuItem>
-                    <MenuItem>MusicalInstrument</MenuItem>
-                    <MenuItem>SportsEquipment</MenuItem>
-                    <MenuItem>OtherHobbies</MenuItem>
-                    <MenuDivider />
-                    <Text as="b">Pets</Text>
-                    <MenuDivider />
-                    <MenuItem>Fishes&Aquarium</MenuItem>
-                    <MenuItem>Pet Food & Accesories</MenuItem>
-                    <MenuItem>Dogs</MenuItem>
-                    <MenuItem>Other Pets</MenuItem>
-                    <MenuDivider />
-                    <Text as="b">Servises</Text>
-                    <MenuDivider />
-                    <MenuItem>Electronics&Computer</MenuItem>
-                    <MenuItem>Education Classes</MenuItem>
-                    <MenuItem>Drivers&Taxi</MenuItem>
-                    <MenuItem>Health & Beauty</MenuItem>
-                  </GridItem>
-                </Grid>
-              </MenuList>
-            </Menu>
-          </Box>
-          <Text as="b" m="auto" _hover={{ bg: "gray.400" }} mt="10px">
-            <Link to="/cars">Cars</Link>
-          </Text>
-          <Text as="b" m="auto" _hover={{ bg: "gray.400" }} mt="10px">
-            <Link to="/bike">Motar Cylcle</Link>
-          </Text>
-          <Text as="b" m="auto" _hover={{ bg: "gray.400" }} mt="10px">
-            <Link to="/mobile">Mobile Phone</Link>
-          </Text>
-          <Text as="b" m="auto" _hover={{ bg: "gray.400" }} mt="10px">
-            Sale:House&appartment
-          </Text>
-          <Text as="b" m="auto" _hover={{ bg: "gray.400" }} mt="10px">
-            Olx(renew)Mobile
-          </Text>
-          <Text as="b" m="auto" _hover={{ bg: "gray.400" }} mt="10px">
-            Scooter
-          </Text>
-          <Text as="b" m="auto" _hover={{ bg: "gray.400" }} mt="10px">
-            rent(house&appartment)
-          </Text>
-        </Grid>
-      </Box>
-      <Box border="1px solid grey" mt="2px" bg="grey"></Box>
+     
     </>
   );
 }
