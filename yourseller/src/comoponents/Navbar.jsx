@@ -28,34 +28,35 @@ import {
 import { EmailIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Link, Navigate } from "react-router-dom";
 import { Appcontext } from "./Statemange";
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import {Searchcontext} from "./pages/Searchcontext";
 
 export default function Navbar() {
-  
+  // const [sname,setSname]=useState("")
   const {  loginstate, setloginstate } = useContext(Appcontext);
-
+   const {sdata,setSdata}= useContext(Searchcontext)
   const handelChange = (e) => {
    const val=e.target.value;
    console.log(val)
+   setSdata(val)
   };
-
+  console.log(sdata)
+  
   return (
     <>
-      <Box w="98%" h="100px" bg="#E2E8F0" >
+      <Box w={[]} h="100px" bg="#E2E8F0" >
         <Box w="90%" h="40px" pt="20px" m="auto">
           <Flex gap="10px">
             <Link to="/">
               {" "}
               <Avatar
-                w="60px"
-                h="40px"
-                mt="10px"
+                w="80px"
+                h="50px"
                 mr="50px"
                 src="https://i.ibb.co/fN9Ns4S/LOGOC5.jpg"
               ></Avatar>
             </Link>
             
-            <Link to="/">Home Page</Link>
            
             <Input bg="white" pl="10px" onChange={handelChange} placeholder="Search" />
             <Spacer />

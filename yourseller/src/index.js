@@ -6,9 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import Statemangement from "./comoponents/Statemange";
+import SearchcontextProvider from "./comoponents/pages/Searchcontext";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  <SearchcontextProvider >
   <Statemangement>
     <BrowserRouter>
       <ChakraProvider>
@@ -16,6 +19,7 @@ root.render(
       </ChakraProvider>
     </BrowserRouter>
   </Statemangement>
+  </SearchcontextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

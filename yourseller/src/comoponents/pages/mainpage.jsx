@@ -13,6 +13,7 @@ import CardMapping from "./Cardmapping";
 import { Appcontext } from "../Statemange";
 import Footer from "../Footer";
 import CardContainer from "./CardContainer";
+import { Searchcontext } from "./Searchcontext";
 
 export default function MainPage() {
   const { state, dispatch } = useContext(Appcontext);
@@ -22,11 +23,12 @@ export default function MainPage() {
   const [order, setOrder] = useState("asc");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-
+  const {sdata}= useContext(Searchcontext)
+  
   const getData = async (cat, order) => {
     try {
       let res = await fetch(
-        `https://mysterious-goat-windbreaker.cyclic.app/random?category=${cat}&_page=${page}&_limit=10&_sort=price&_order=${order}`
+        `https://mysterious-goat-windbreaker.cyclic.app/random?category=${cat}&_page=${page}&_limit=10&_sort=price&_order=${order}&q=${sdata}`
       );
       let data = await res.json();
       console.log(data);
@@ -38,7 +40,7 @@ export default function MainPage() {
 
   useEffect(() => {
     getData(cat, order);
-  }, [cat, order, page]);
+  }, [cat, order, page,sdata]);
 
   return (
      

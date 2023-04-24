@@ -2,15 +2,18 @@
 import { useEffect } from "react"
 import { useContext } from "react"
 import { Appcontext } from "../comoponents/Statemange"
-import { Box,Grid,GridTemplate,Image,Text,SkeletonCircle,Skeleton,SkeletonText } from "@chakra-ui/react"
+import { Box,Grid,GridTemplate,Image,Text,SkeletonCircle,Skeleton,SkeletonText, SimpleGrid } from "@chakra-ui/react"
 import {Link} from "react-router-dom"
 import CardContainer from "../comoponents/pages/CardContainer"
+import { Searchcontext } from "../comoponents/pages/Searchcontext"
 
 export default function Mobile(){
 const {state,dispatch}=useContext(Appcontext)
+const {sdata}= useContext(Searchcontext)
+
 
 async function Mobile(){
-    return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=1&limit=10&category=Mobile`).then((res)=>res.json())
+    return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=1&limit=10&category=Mobile&q=${sdata}`).then((res)=>res.json())
 }
 
 useEffect(()=>{
@@ -27,7 +30,7 @@ dispatch({type:"finish"})
 return <>
 {
    
-   state.isloading?<Skeleton startColor='green.500' endColor='black.500' height='20px' />:  <Grid templateColumns='repeat(5, 1fr)' gap={6} bg='gray.100'  >
+   state.isloading?<Skeleton startColor='green.500' endColor='black.500' height='20px' />:  <SimpleGrid columns={[1,1,2,4]} gap={6} bg='gray.100'  >
 
    
    
@@ -42,7 +45,7 @@ return <>
         
    )}
   
-  </Grid>
+  </SimpleGrid>
 }
 
 </>

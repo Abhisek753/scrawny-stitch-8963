@@ -27,13 +27,14 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-export default function CardContainer({image,category,id,display,date,price,chipset,location,seller_name}) {
+export default function CardContainer({mobilename,model,bikename,image,category,id,display,date,price,chipset,location,seller_name}) {
   return (
     <Center py={12}>
       <Box
         role={'group'}
         p={6}
-        maxW={'330px'}
+        maxW={'340px'}
+        h={"500px"}
         w={'full'}
         bg={useColorModeValue('white', 'gray.800')}
         boxShadow={'2xl'}
@@ -42,8 +43,7 @@ export default function CardContainer({image,category,id,display,date,price,chip
         zIndex={1}>
         <Box
           rounded={'lg'}
-          mt={-12}
-          pos={'relative'}
+           pos={'relative'}
           height={'230px'}
           _after={{
             transition: 'all .3s ease',
@@ -83,10 +83,19 @@ export default function CardContainer({image,category,id,display,date,price,chip
               $199
             </Text> */}
           </Stack>
-          <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-          <Link to={`/${id}`}>More Details</Link>
-          </Heading>
+          <Stack direction={'row'} align={'center'}>
+            <Text fontWeight={800} fontSize={'15px'}>
+              {bikename||mobilename||model}
+            </Text>
+            {/* <Text textDecoration={'line-through'} color={'gray.600'}>
+              $199
+            </Text> */}
+          </Stack>
+         
         </Stack>
+        <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500} mb={"20px"} >
+          <Link to={`/${id}`} >More Details</Link>
+          </Heading>
       </Box>
     </Center>
   );

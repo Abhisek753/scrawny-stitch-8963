@@ -3,18 +3,21 @@ import { useState } from "react"
 import { useContext } from "react"
 import { useEffect } from "react"
 import { Appcontext } from "../comoponents/Statemange"
-import { Box,Grid,GridTemplate,Image,Text,SkeletonCircle,Skeleton,SkeletonText, Button } from "@chakra-ui/react"
+import { Box,Grid,GridTemplate,Image,Text,SkeletonCircle,Skeleton,SkeletonText, Button, SimpleGrid } from "@chakra-ui/react"
 import {Link} from "react-router-dom"
 import CardContainer from "../comoponents/pages/CardContainer"
+import { Searchcontext } from "../comoponents/pages/Searchcontext"
 export default function Bikes (){
 
    
    const {state,dispatch}=useContext(Appcontext)
   const [page, setPage] = useState(1);
+  const {sdata}= useContext(Searchcontext)
+
    
    
     async function Getbikes(){
-        return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=${page}&_limit=10&category=bikes`).then((res)=>res.json())
+        return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=${page}&_limit=10&category=bikes&q=${sdata}`).then((res)=>res.json())
          
     }
 
@@ -36,7 +39,7 @@ console.log(res)
     <Box>
      {
         
-        state.isloading?<Skeleton startColor='green.500' endColor='black.500' height='20px' color={"black"} />:  <Grid templateColumns='repeat(5, 1fr)' gap={6} bg='gray.100'  >
+        state.isloading?<Skeleton startColor='green.500' endColor='black.500' height='20px' color={"black"} />:  <SimpleGrid columns={[1,1,2,4]} gap={6} bg='gray.100'  >
         { state.bikedata&& state.bikedata.map((elm)=>
        
         // <Box key={elm.id} color={"black"} > 
@@ -47,7 +50,7 @@ console.log(res)
         <CardContainer {...elm}/>
         ) }
        
-       </Grid>
+       </SimpleGrid>
       
 }
 <Box>

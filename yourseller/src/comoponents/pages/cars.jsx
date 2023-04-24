@@ -12,16 +12,20 @@ import {
   Skeleton,
   SkeletonText,
   Button,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import CardContainer from "./CardContainer";
+import { Searchcontext } from "./Searchcontext";
 
 export default function Cars() {
   const { state, dispatch } = useContext(Appcontext);
   const [page, setPage] = useState(1);
+  const {sdata}= useContext(Searchcontext)
+
 
   async function GetCars() {
-    return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=${page}&_limit=10&category=Car`).then((res) =>res.json());
+    return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=${page}&_limit=10&category=Car&q=${sdata}`).then((res) =>res.json());
   }
 
   useEffect(() => {
@@ -42,7 +46,7 @@ export default function Cars() {
       {state.isloading ? (
         <Skeleton startColor="green.500" endColor="black.500" height="20px" />
       ) : (
-        <Grid templateColumns="repeat(5, 1fr)" gap={6} bg="gray.100">
+        <SimpleGrid columns={[1,1,2,4]} gap={6} bg="gray.100">
           {state.cardata &&
             state.cardata.map((elm) => (
               // <Box key={elm.id}>
@@ -54,7 +58,7 @@ export default function Cars() {
               <CardContainer {...elm}/>
 
             ))}
-        </Grid>
+        </SimpleGrid>
       )}
       <Box
           display={"flex"}
