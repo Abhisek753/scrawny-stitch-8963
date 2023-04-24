@@ -28,19 +28,15 @@ import {
 import { EmailIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Link, Navigate } from "react-router-dom";
 import { Appcontext } from "./Statemange";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function Navbar() {
-  const { state, dispatch, loginstate, setloginstate } = useContext(Appcontext);
+  
+  const {  loginstate, setloginstate } = useContext(Appcontext);
 
   const handelChange = (e) => {
-    const x = state.alldata.filter((elm) => {
-      return elm.category == e.target.value;
-    });
-
-    if (x != "") {
-      dispatch({ type: "finish", payload: x });
-    }
+   const val=e.target.value;
+   console.log(val)
   };
 
   return (
@@ -51,22 +47,17 @@ export default function Navbar() {
             <Link to="/">
               {" "}
               <Avatar
-                w="100px"
+                w="60px"
                 h="40px"
                 mt="10px"
                 mr="50px"
                 src="https://i.ibb.co/fN9Ns4S/LOGOC5.jpg"
               ></Avatar>
             </Link>
-            <Spacer />
+            
             <Link to="/">Home Page</Link>
-            <Select placeholder="Select option">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </Select>
-            <Spacer />
-            <Input bg="white" pl="10px" onChange={handelChange} />
+           
+            <Input bg="white" pl="10px" onChange={handelChange} placeholder="Search" />
             <Spacer />
             <Select bg="teal" placeholder="English"></Select>
             <Spacer />

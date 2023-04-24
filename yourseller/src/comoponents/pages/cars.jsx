@@ -11,17 +11,17 @@ import {
   SkeletonCircle,
   Skeleton,
   SkeletonText,
+  Button,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import CardContainer from "./CardContainer";
 
 export default function Cars() {
   const { state, dispatch } = useContext(Appcontext);
+  const [page, setPage] = useState(1);
 
   async function GetCars() {
-    return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?category=Car`).then((res) =>
-      res.json()
-    );
+    return fetch(`https://mysterious-goat-windbreaker.cyclic.app/random?_page=${page}&_limit=10&category=Car`).then((res) =>res.json());
   }
 
   useEffect(() => {
@@ -35,10 +35,10 @@ export default function Cars() {
       .catch((error) => {
         dispatch({ type: "loginfail" });
       });
-  }, []);
+  }, [page]);
 
   return (
-    <>
+    <Box>
       {state.isloading ? (
         <Skeleton startColor="green.500" endColor="black.500" height="20px" />
       ) : (
@@ -56,6 +56,20 @@ export default function Cars() {
             ))}
         </Grid>
       )}
-    </>
+      <Box
+          display={"flex"}
+          m={"auto"}
+          width={"30%"}
+          justifyContent={"space-between"}
+        >
+          <Button onClick={() => setPage(page - 1)} bgColor={"#6870a6"}>
+            Pre
+          </Button>
+          <Button bgColor={"#a1a7cf"}>{page}</Button>
+          <Button onClick={() => setPage(page + 1)} bgColor={"#6870a6"}>
+            Next
+          </Button>
+        </Box>
+    </Box>
   );
 }

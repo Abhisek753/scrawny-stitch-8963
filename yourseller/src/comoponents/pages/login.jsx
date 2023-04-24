@@ -64,7 +64,7 @@ export default function Login() {
   //wrong Password
 
   if (loginstate) {
-    return <Navigate to="/" />;
+    return <Navigate to="/cars" />;
   }
   if (state.wrong && state.wrong1) {
     const id = setTimeout(() => {
