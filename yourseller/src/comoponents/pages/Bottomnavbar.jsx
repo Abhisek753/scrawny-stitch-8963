@@ -23,6 +23,7 @@ import {
     Spacer,
     Avatar,
     Select,
+    SimpleGrid,
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
@@ -75,7 +76,7 @@ import { Link } from "react-router-dom";
                 All Catagorie <ChevronDownIcon />
               </MenuButton>
               <MenuList>
-                <Grid h="auto" templateColumns="repeat(4, 1fr)" gap={3}>
+                <SimpleGrid h="auto" columns={[2,2,2,4]} gap={3} zIndex={1}>
                   <GridItem rowSpan={1} colSpan={1}     >
                     <MenuItem>olx auto(cars)</MenuItem>
                     <MenuDivider />
@@ -156,7 +157,7 @@ import { Link } from "react-router-dom";
                     <MenuItem>Drivers&Taxi</MenuItem>
                     <MenuItem>Health & Beauty</MenuItem>
                   </GridItem>
-                </Grid>
+                </SimpleGrid>
               </MenuList>
             </Menu>
             </Box>

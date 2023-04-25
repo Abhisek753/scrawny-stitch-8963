@@ -11,7 +11,7 @@ function App() {
   
   return (
     <div className="App"  >
-      <Box width="100%" border={"2px solid red"} >
+      <Box  >
       <Navbar />
       <WithSubnavigation/>
       <Allroutes />

@@ -23,8 +23,8 @@ export default function MainPage() {
   const [order, setOrder] = useState("asc");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  const {sdata}= useContext(Searchcontext)
-  
+  const { sdata } = useContext(Searchcontext);
+
   const getData = async (cat, order) => {
     try {
       let res = await fetch(
@@ -40,20 +40,15 @@ export default function MainPage() {
 
   useEffect(() => {
     getData(cat, order);
-  }, [cat, order, page,sdata]);
+  }, [cat, order, page, sdata]);
 
   return (
-     
-    <Flex display={["block", "block", "flex"]} zIndex={-1} >
-      <Box w={"20%"}
-       boxShadow={"1px 2px 9px #e2e8f0"}
-       zIndex={-1}
-      >
+    <Flex display={["block", "block",]}>
+      <Box w={"20%"} boxShadow={"1px 2px 9px #e2e8f0"} zIndex={-1}>
         <Select
           mt={5}
-        m={"auto"}
-
-         width={"90%"}
+          m={"auto"}
+          width={"90%"}
           _hover={{ backgroundColor: "teal" }}
           border={"none"}
           placeholder="Select Category"
@@ -64,11 +59,9 @@ export default function MainPage() {
           <option value="bikes">Bike</option>
         </Select>
         <Select
-        m={"auto"}
+          m={"auto"}
           mt={5}
-      
           width={"90%"}
-         
           border={"none"}
           _hover={{ backgroundColor: "teal" }}
           placeholder="Select Order"
@@ -80,7 +73,7 @@ export default function MainPage() {
         </Select>
       </Box>
       <Box>
-        <SimpleGrid m="auto" w="95%" gap={5} columns={[1, 2, 3, 4]} >
+        <SimpleGrid m="auto" w="95%" gap={5} columns={[1, 2, 3, 4]}>
           {data.length !== 0 &&
             data.map((el, index, arr) => <CardContainer key={el.id} {...el} />)}
         </SimpleGrid>

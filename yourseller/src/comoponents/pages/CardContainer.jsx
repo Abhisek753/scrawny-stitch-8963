@@ -40,7 +40,7 @@ export default function CardContainer({mobilename,model,bikename,image,category,
         boxShadow={'2xl'}
         rounded={'lg'}
         pos={'relative'}
-        zIndex={1}>
+        >
         <Box
           rounded={'lg'}
            pos={'relative'}
@@ -91,11 +91,11 @@ export default function CardContainer({mobilename,model,bikename,image,category,
               $199
             </Text> */}
           </Stack>
-         
-        </Stack>
-        <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500} mb={"20px"} >
+          <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500} mb={"20px"} >
           <Link to={`/${id}`} >More Details</Link>
           </Heading>
+        </Stack>
+      
       </Box>
     </Center>
   );
