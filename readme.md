@@ -7,6 +7,7 @@
 <li>Filter & Sorting</li>
 <li>Pagination</li>
 <li>Authentication</li>
+<li>Search</li>
 <br/>
 <h2>Technologies Used</h2>
 <li>HTML</li>
